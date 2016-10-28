@@ -335,6 +335,11 @@ bool approximately( const Vector2& v0, const Vector2& v1 ) {
 	return sqrLength(v0 - v1) < Epsilon;
 }
 
+Vector2 reflect( const Vector2& direction, const Vector2& normal ) {
+	Vector2 result = ((-2.0f * dot(normal, direction)) * normal) + direction;
+	return result;
+}
+
 //
 // TUPLE OPERATIONS
 //

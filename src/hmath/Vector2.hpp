@@ -79,6 +79,7 @@ Vector2 lerpClamped( const Vector2& v0, const Vector2& v1, float t );
 Vector2 minimum( const Vector2& v0, const Vector2& v1 );
 Vector2 maximum( const Vector2& v0, const Vector2& v1 );
 bool approximately( const Vector2& v0, const Vector2& v1 );
+Vector2 reflect( const Vector2& direction, const Vector2& normal );
 
 #include "Vector2.inl"
 

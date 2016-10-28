@@ -220,13 +220,9 @@ float length( const Vector2& vec ) {
 }
 
 float lengthRobust( const Vector2& vec ) {
-	float maxAbsComp = fabsf(vec[0]);
-	for( int i = 1; i < 2; ++i ) {
-		const float absComp = fabsf(vec[i]);
-		if( absComp > maxAbsComp ) {
-			maxAbsComp = absComp;
-		}
-	}
+	const float abs_x = fabsf(vec[0]);
+	const float abs_y = fabsf(vec[1]);
+	const float maxAbsComp = abs_x > abs_y ? abs_x : abs_y;
 
 	float length;
 	if( maxAbsComp > 0.0f ) {
@@ -253,13 +249,9 @@ float normalize( Vector2& vec ) {
 }
 
 float normalizeRobust( Vector2& vec ) {
-	float maxAbsComp = fabsf(vec[0]);
-	for( int i = 1; i < 2; ++i ) {
-		const float absComp = fabsf(vec[i]);
-		if( absComp > maxAbsComp ) {
-			maxAbsComp = absComp;
-		}
-	}
+	const float abs_x = fabsf(vec[0]);
+	const float abs_y = fabsf(vec[1]);
+	const float maxAbsComp = abs_x > abs_y ? abs_x : abs_y;
 
 	float length;
 	if( maxAbsComp > 0.0f ) {

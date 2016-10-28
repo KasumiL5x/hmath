@@ -189,6 +189,64 @@ public:
 		Assert::AreEqual(a/c, div[0], Epsilon);
 		Assert::AreEqual(b/d, div[1], Epsilon);
 	}
+
+	TEST_METHOD(Dot) {
+		const hmath::Vector2 vec_a = {12, 20};
+		const hmath::Vector2 vec_b = {16, -5};
+		Assert::AreEqual(92.0f, hmath::dot(vec_a, vec_b), Epsilon);
+	}
+	
+	TEST_METHOD(Length) {
+		const hmath::Vector2 vec = {12, 20};
+		Assert::AreEqual(23.3238f, hmath::length(vec), Epsilon);
+	}
+
+	TEST_METHOD(LengthRobust) {
+		const hmath::Vector2 vec = {12, 20};
+		Assert::AreEqual(23.3238f, hmath::lengthRobust(vec), Epsilon);
+
+		const hmath::Vector2 vec_zero = {0.0f, 0.0f};
+		Assert::AreEqual(0.0f, hmath::lengthRobust(vec_zero), Epsilon);
+	}
+
+	TEST_METHOD(SqrLength) {
+		const hmath::Vector2 vec = {12, 20};
+		Assert::AreEqual(12*12+20*20, hmath::sqrLength(vec), Epsilon);
+	}
+
+	TEST_METHOD(Normalize) {
+		hmath::Vector2 vec = {12, 20};
+
+		const float preLen = hmath::normalize(vec);
+		const float nrmLen = hmath::length(vec);
+		Assert::AreEqual(23.3238f, preLen, Epsilon);
+		Assert::AreEqual(1.0f, nrmLen, Epsilon);
+
+		hmath::Vector2 zero = {0.0f, 0.0f};
+		const float zeroPreLen = hmath::normalize(zero);
+		const float zeroNrmLen = hmath::length(zero);
+		Assert::AreEqual(0.0f, zeroPreLen, Epsilon);
+		Assert::AreEqual(0.0f, zeroNrmLen, Epsilon);
+		Assert::AreEqual(0.0f, zero[0], Epsilon);
+		Assert::AreEqual(0.0f, zero[1], Epsilon);
+	}
+
+	TEST_METHOD(NormalizeRobust) {
+		hmath::Vector2 vec = {12, 20};
+
+		const float preLen = hmath::normalizeRobust(vec);
+		const float nrmLen = hmath::length(vec);
+		Assert::AreEqual(23.3238f, preLen, Epsilon);
+		Assert::AreEqual(1.0f, nrmLen, Epsilon);
+
+		hmath::Vector2 zero = {0.0f, 0.0f};
+		const float zeroPreLen = hmath::normalizeRobust(zero);
+		const float zeroNrmLen = hmath::length(zero);
+		Assert::AreEqual(0.0f, zeroPreLen, Epsilon);
+		Assert::AreEqual(0.0f, zeroNrmLen, Epsilon);
+		Assert::AreEqual(0.0f, zero[0], Epsilon);
+		Assert::AreEqual(0.0f, zero[1], Epsilon);
+	}
 };
 
 }

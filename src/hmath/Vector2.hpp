@@ -4,6 +4,8 @@
 #include <array>
 #include <cmath>
 #include <cassert>
+#include "Functions.hpp" // clamp
+#include "Constants.hpp" // epsilon
 
 namespace hmath {
 
@@ -72,6 +74,11 @@ float normalize( Vector2& vec );
 float normalizeRobust( Vector2& vec );
 float distance( const Vector2& v0, const Vector2& v1 );
 float sqrDistance( const Vector2& v0, const Vector2& v1 );
+Vector2 lerp( const Vector2& v0, const Vector2& v1, float t );
+Vector2 lerpClamped( const Vector2& v0, const Vector2& v1, float t );
+Vector2 minimum( const Vector2& v0, const Vector2& v1 );
+Vector2 maximum( const Vector2& v0, const Vector2& v1 );
+bool approximately( const Vector2& v0, const Vector2& v1 );
 
 #include "Vector2.inl"
 

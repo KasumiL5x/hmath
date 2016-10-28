@@ -302,6 +302,38 @@ float sqrDistance( const Vector2& v0, const Vector2& v1 ) {
 	return sqrLength(v0 - v1);
 }
 
+Vector2 lerp( const Vector2& v0, const Vector2& v1, float t ) {
+	Vector2 result;
+	result[0] = v0[0] + (v1[0] - v0[0]) * t;
+	result[1] = v0[1] + (v1[1] - v0[1]) * t;
+	return result;
+}
+
+Vector2 lerpClamped( const Vector2& v0, const Vector2& v1, float t ) {
+	t = clamp01(t);
+	Vector2 result;
+	result[0] = v0[0] + (v1[0] - v0[0]) * t;
+	result[1] = v0[1] + (v1[1] - v0[1]) * t;
+	return result;
+}
+
+Vector2 minimum( const Vector2& v0, const Vector2& v1 ) {
+	Vector2 result;
+	result[0] = minimum(v0[0], v1[0]);
+	result[1] = minimum(v0[1], v1[1]);
+	return result;
+}
+
+Vector2 maximum( const Vector2& v0, const Vector2& v1 ) {
+	Vector2 result;
+	result[0] = maximum(v0[0], v1[0]);
+	result[1] = maximum(v0[1], v1[1]);
+	return result;
+}
+
+bool approximately( const Vector2& v0, const Vector2& v1 ) {
+	return sqrLength(v0 - v1) < Epsilon;
+}
 
 //
 // TUPLE OPERATIONS

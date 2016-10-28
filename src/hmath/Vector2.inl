@@ -63,6 +63,35 @@ Vector2 Vector2::one() {
 	return vec;
 }
 
+Vector2 Vector2::left() {
+	Vector2 vec;
+	vec[0] = -1;
+	vec[1] = 0;
+	return vec;
+}
+
+Vector2 Vector2::right() {
+	Vector2 vec;
+	vec[0] = 1;
+	vec[1] = 0;
+	return vec;
+}
+
+
+Vector2 Vector2::up() {
+	Vector2 vec;
+	vec[0] = 0;
+	vec[1] = 1;
+	return vec;
+}
+
+Vector2 Vector2::down() {
+	Vector2 vec;
+	vec[0] = 0;
+	vec[1] = -1;
+	return vec;
+}
+
 Vector2 Vector2::unit( int index ) {
 	Vector2 vec;
 	vec.makeUnit(index);
@@ -266,11 +295,11 @@ float normalizeRobust( Vector2& vec ) {
 }
 
 float distance( const Vector2& v0, const Vector2& v1 ) {
-	return (v0 - v1).length();
+	return length(v0 - v1);
 }
 
 float sqrDistance( const Vector2& v0, const Vector2& v1 ) {
-	return (v0 - v1).sqrLength();
+	return sqrLength(v0 - v1);
 }
 
 

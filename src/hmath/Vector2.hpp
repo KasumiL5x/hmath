@@ -30,6 +30,10 @@ public:
 
 	static Vector2 zero();
 	static Vector2 one();
+	static Vector2 left();
+	static Vector2 right();
+	static Vector2 up();
+	static Vector2 down();
 	static Vector2 unit( int index );
 
 protected:

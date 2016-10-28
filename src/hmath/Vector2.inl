@@ -104,9 +104,8 @@ Vector2 operator+( const Vector2& vec ) {
 
 Vector2 operator-( const Vector2& vec ) {
 	Vector2 result;
-	for( int i = 0; i < 2; ++i ) {
-		result[i] = -vec[i];
-	}
+	result[0] = -vec[0];
+	result[1] = -vec[1];
 	return result;
 }
 
@@ -139,50 +138,42 @@ Vector2 operator/( const Vector2& vec, float scalar ) {
 }
 
 Vector2& operator+=( Vector2& v0, const Vector2& v1 ) {
-	for( int i = 0; i < 2; ++i ) {
-		v0[i] += v1[i];
-	}
+	v0[0] += v1[0];
+	v0[1] += v1[1];
 	return v0;
 }
 
 Vector2& operator-=( Vector2& v0, const Vector2& v1 ) {
-	for( int i = 0; i < 2; ++i ) {
-		v0[i] -= v1[i];
-	}
+	v0[0] -= v1[0];
+	v0[1] -= v1[1];
 	return v0;
 }
 
 Vector2& operator*( Vector2& vec, float scalar ) {
-	for( int i = 0; i < 2; ++i ) {
-		vec[i] *= scalar;
-	}
+	vec[0] *= scalar;
+	vec[1] *= scalar;
 	return vec;
 }
 
 Vector2& operator*( float scalar, Vector2& vec ) {
-	for( int i = 0; i < 2; ++i ) {
-		vec[i] *= scalar;
-	}
+	vec[0] *= scalar;
+	vec[1] *= scalar;
 	return vec;
 }
 
 Vector2& operator*=( Vector2& vec, float scalar ) {
-	for( int i = 0; i < 2; ++i ) {
-		vec[i] *= scalar;
-	}
+	vec[0] *= scalar;
+	vec[1] *= scalar;
 	return vec;
 }
 
 Vector2& operator/=( Vector2& vec, float scalar ) {
 	if( 0.0f != scalar ) {
 		const float inv = 1.0f / scalar;
-		for( int i = 0; i < 2; ++i ) {
-			vec[i] *= inv;
-		}
+		vec[0] *= inv;
+		vec[1] *= inv;
 	} else {
-		for( int i = 0; i < 2; ++i ) {
-			vec[i] = 0.0f;
-		}
+		vec[0] = vec[1] = 0.0f;
 	}
 	return vec;
 }
@@ -202,16 +193,14 @@ Vector2 operator/( const Vector2& v0, const Vector2& v1 ) {
 }
 
 Vector2& operator*=( Vector2& v0, const Vector2& v1 ) {
-	for( int i = 0; i < 2; ++i ) {
-		v0[i] *= v1[i];
-	}
+	v0[0] *= v1[0];
+	v0[1] *= v1[1];
 	return v0;
 }
 
 Vector2& operator/=( Vector2& v0, const Vector2& v1 ) {
-	for( int i = 0; i < 2; ++i ) {
-		v0[i] /= v1[i];
-	}
+	v0[0] /= v1[0];
+	v0[1] /= v1[1];
 	return v0;
 }
 
@@ -220,10 +209,7 @@ Vector2& operator/=( Vector2& v0, const Vector2& v1 ) {
 // GEOMETRIC OPERATIONS
 //
 float dot( const Vector2& v0, const Vector2& v1 ) {
-	float dp = 0.0f;
-	for( int i = 1; i < 2; ++i ) {
-		dp += v0[i] * v1[i];
-	}
+	float dp = (v0[0] * v1[0]) + v0[1] * v1[1];
 	return dp;
 }
 
@@ -259,9 +245,7 @@ float normalize( Vector2& vec ) {
 	if( length > 0.0f ) {
 		vec /= length;
 	} else {
-		for( int i = 0; i < 2; ++i ) {
-			vec[i] = 0.0f;
-		}
+		vec[0]=vec[1] = 0.0f;
 	}
 	return length;
 }
@@ -283,9 +267,7 @@ float normalizeRobust( Vector2& vec ) {
 		length *= maxAbsComp;
 	} else {
 		length = 0.0f;
-		for( int i = 0; i < 2; ++i ) {
-			vec[i] = 0.0f;
-		}
+		vec[0]=vec[1] = 0.0f;
 	}
 	return length;
 }

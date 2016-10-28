@@ -1,2 +1,7 @@
+syntax: glob
+
 test/Debug
 test/Release
+
+*.gch
+

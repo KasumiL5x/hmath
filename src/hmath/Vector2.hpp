@@ -65,7 +65,7 @@ float sqrLength( const Vector2& vec );
 float normalize( Vector2& vec );
 float normalizeRobust( Vector2& vec );
 
-#include "Vector2.inc"
+#include "Vector2.inl"
 
 }
 

@@ -74,6 +74,78 @@ public:
 		//vec.makeUnit(-1); // asserts
 		//vec.makeUnit(2); // asserts
 	}
+
+	TEST_METHOD(Statics) {
+		hmath::Vector2 zero = hmath::Vector2::zero();
+		Assert::AreEqual(0.0f, zero[0], Epsilon);
+		Assert::AreEqual(0.0f, zero[1], Epsilon);
+
+		hmath::Vector2 one = hmath::Vector2::one();
+		Assert::AreEqual(1.0f, one[0], Epsilon);
+		Assert::AreEqual(1.0f, one[1], Epsilon);
+
+		hmath::Vector2 left = hmath::Vector2::left();
+		Assert::AreEqual(-1.0f, left[0], Epsilon);
+		Assert::AreEqual(0.0f, left[1], Epsilon);
+
+		hmath::Vector2 right = hmath::Vector2::right();
+		Assert::AreEqual(1.0f, right[0], Epsilon);
+		Assert::AreEqual(0.0f, right[1], Epsilon);
+
+		hmath::Vector2 up = hmath::Vector2::up();
+		Assert::AreEqual(0.0f, up[0], Epsilon);
+		Assert::AreEqual(1.0f, up[1], Epsilon);
+
+		hmath::Vector2 down = hmath::Vector2::down();
+		Assert::AreEqual(0.0f, down[0], Epsilon);
+		Assert::AreEqual(-1.0f, down[1], Epsilon);
+	}
+
+	TEST_METHOD(UnaryOperators) {
+		const float a = 1.0f;
+		const float b = 2.0f;
+		const hmath::Vector2 vec = {a, b};
+
+		const hmath::Vector2 pos = +vec;
+		Assert::AreEqual(a, pos[0], Epsilon);
+		Assert::AreEqual(b, pos[1], Epsilon);
+
+		const hmath::Vector2 neg = -vec;
+		Assert::AreEqual(-a, neg[0], Epsilon);
+		Assert::AreEqual(-b, neg[1], Epsilon);
+	}
+
+	TEST_METHOD(LinearAlgebraOperations) {
+		const float a = 1.0f;
+		const float b = 2.0f;
+		const float c = 3.0f;
+		const float d = 4.0f;
+
+		const hmath::Vector2 vec_a = {a, b};
+		const hmath::Vector2 vec_b = {c, d};
+
+		const hmath::Vector2 vec_add = vec_a + vec_b;
+		Assert::AreEqual(a+c, vec_add[0], Epsilon);
+		Assert::AreEqual(b+d, vec_add[1], Epsilon);
+
+		const hmath::Vector2 vec_sub = vec_a - vec_b;
+		Assert::AreEqual(a-c, vec_sub[0], Epsilon);
+		Assert::AreEqual(b-d, vec_sub[1], Epsilon);
+
+		const hmath::Vector2 vec_mul_scalar = vec_a * c;
+		Assert::AreEqual(a*c, vec_mul_scalar[0], Epsilon);
+		Assert::AreEqual(b*c, vec_mul_scalar[1], Epsilon);
+
+		const hmath::Vector2 vec_mul_scalar2 = c * vec_a;
+		Assert::AreEqual(a*c, vec_mul_scalar2[0], Epsilon);
+		Assert::AreEqual(b*c, vec_mul_scalar2[1], Epsilon);
+
+		const hmath::Vector2 vec_div_scalar = vec_a / c;
+		Assert::AreEqual(a/c, vec_div_scalar[0], Epsilon);
+		Assert::AreEqual(b/c, vec_div_scalar[1], Epsilon);
+
+		//hmath::Vector2 vec_plus
+	}
 };
 
 }

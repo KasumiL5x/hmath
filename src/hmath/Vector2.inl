@@ -163,18 +163,6 @@ Vector2& operator-=( Vector2& v0, const Vector2& v1 ) {
 	return v0;
 }
 
-Vector2& operator*( Vector2& vec, float scalar ) {
-	vec[0] *= scalar;
-	vec[1] *= scalar;
-	return vec;
-}
-
-Vector2& operator*( float scalar, Vector2& vec ) {
-	vec[0] *= scalar;
-	vec[1] *= scalar;
-	return vec;
-}
-
 Vector2& operator*=( Vector2& vec, float scalar ) {
 	vec[0] *= scalar;
 	vec[1] *= scalar;

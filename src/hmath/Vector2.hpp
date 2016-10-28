@@ -55,8 +55,6 @@ Vector2 operator*( float scalar, const Vector2& vec );
 Vector2 operator/( const Vector2& vec, float scalar );
 Vector2& operator+=( Vector2& v0, const Vector2& v1 );
 Vector2& operator-=( Vector2& v0, const Vector2& v1 );
-Vector2& operator*( Vector2& vec, float scalar );
-Vector2& operator*( float scalar, Vector2& vec );
 Vector2& operator*=( Vector2& vec, float scalar );
 Vector2& operator/=( Vector2& vec, float scalar );
 

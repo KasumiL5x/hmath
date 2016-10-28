@@ -19,7 +19,6 @@ public:
 	inline float& operator[]( int index );
 	inline float x() const;
 	inline float y() const;
-	inline float z() const;
 
 	// comparison operators
 	inline bool operator==( const Vector2& vec ) const;

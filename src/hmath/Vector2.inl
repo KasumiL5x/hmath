@@ -31,10 +31,6 @@ float Vector2::y() const {
 	return tuple_[1];
 }
 
-float Vector2::z() const {
-	return tuple_[2];
-}
-
 
 //
 // COMPARISON OPERATORS

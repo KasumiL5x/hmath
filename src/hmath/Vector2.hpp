@@ -2,6 +2,7 @@
 #define __hmath_Vector2__
 
 #include <array>
+#include <initializer_list>
 #include <cmath>
 #include <cassert>
 #include "Functions.hpp" // clamp
@@ -13,6 +14,7 @@ class Vector2 {
 public:
 	Vector2();
 	Vector2( const std::array<float, 2>& values );
+	Vector2( std::initializer_list<float> values );
 
 	// accessors
 	inline float const& operator[]( int index ) const;

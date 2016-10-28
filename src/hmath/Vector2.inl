@@ -9,17 +9,31 @@ Vector2::Vector2( const std::array<float, 2>& values )
 	: tuple_(values) {
 }
 
+Vector2::Vector2( std::initializer_list<float> values ) {
+	int i = 0;
+	for( auto val : values ) {
+		if( i < 2 ) {
+			tuple_[i++] = val;
+		} else {
+			break;
+		}
+	}
+	for( ; i < 2; ++i ) {
+		tuple_[i] = 0.0f;
+	}
+}
+
 
 //
 // ACCESSORS
 //
 float const& Vector2::operator[]( int index ) const {
-	assert(index >= 0 && index <= 2);
+	assert(index >= 0 && index <= 1);
 	return tuple_[index];
 }
 
 float& Vector2::operator[]( int index ) {
-	assert(index >= 0 && index <= 2);
+	assert(index >= 0 && index <= 1);
 	return tuple_[index];
 }
 
@@ -330,7 +344,7 @@ void Vector2::makeOne() {
 }
 
 void Vector2::makeUnit( int index ) {
-	assert(index >= 0 && index <= 2);
+	assert(index >= 0 && index <= 1);
 	std::fill(tuple_.begin(), tuple_.end(), 0.0f);
 	tuple_[index] = 1.0f;
 }

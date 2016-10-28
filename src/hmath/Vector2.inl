@@ -275,6 +275,10 @@ void Vector2::makeZero() {
 	std::fill(tuple_.begin(), tuple_.end(), 0.0f);
 }
 
+void Vector2::makeOne() {
+	std::fill(tuple_.begin(), tuple_.end(), 1.0f);
+}
+
 void Vector2::makeUnit( int index ) {
 	assert(index >= 0 && index <= 2);
 	std::fill(tuple_.begin(), tuple_.end(), 0.0f);

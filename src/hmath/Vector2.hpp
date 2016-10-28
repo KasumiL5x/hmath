@@ -25,6 +25,7 @@ public:
 
 	// tuple operations
 	void makeZero();
+	void makeOne();
 	void makeUnit( int index );
 
 	static Vector2 Zero();

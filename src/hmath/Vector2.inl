@@ -263,6 +263,10 @@ float distance( const Vector2& v0, const Vector2& v1 ) {
 	return (v0 - v1).length();
 }
 
+float sqrDistance( const Vector2& v0, const Vector2& v1 ) {
+	return (v0 - v1).sqrLength();
+}
+
 
 //
 // TUPLE OPERATIONS

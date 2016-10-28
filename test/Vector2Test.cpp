@@ -144,7 +144,30 @@ public:
 		Assert::AreEqual(a/c, vec_div_scalar[0], Epsilon);
 		Assert::AreEqual(b/c, vec_div_scalar[1], Epsilon);
 
-		//hmath::Vector2 vec_plus
+		hmath::Vector2 vec_plus_equals = {a, b};
+		vec_plus_equals += {c, d};
+		Assert::AreEqual(a+c, vec_plus_equals[0], Epsilon);
+		Assert::AreEqual(b+d, vec_plus_equals[1], Epsilon);
+
+		hmath::Vector2 vec_minus_equals = {a, b};
+		vec_minus_equals -= {c, d};
+		Assert::AreEqual(a-c, vec_minus_equals[0], Epsilon);
+		Assert::AreEqual(b-d, vec_minus_equals[1], Epsilon);
+
+		hmath::Vector2 vec_mul_equals = {a, b};
+		vec_mul_equals *= c;
+		Assert::AreEqual(a*c, vec_mul_equals[0], Epsilon);
+		Assert::AreEqual(b*c, vec_mul_equals[1], Epsilon);
+
+		hmath::Vector2 vec_div_equals = {a, b};
+		vec_div_equals /= c;
+		Assert::AreEqual(a/c, vec_div_equals[0], Epsilon);
+		Assert::AreEqual(b/c, vec_div_equals[1], Epsilon);
+
+		hmath::Vector2 vec_div_zero = {a, b};
+		vec_div_zero /= 0.0f;
+		Assert::AreEqual(0.0f, vec_div_zero[0], Epsilon);
+		Assert::AreEqual(0.0f, vec_div_zero[1], Epsilon);
 	}
 };
 

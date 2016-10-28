@@ -51,13 +51,19 @@ bool Vector2::operator!=( const Vector2& vec ) const {
 //
 // STATIC TYPES
 //
-Vector2 Vector2::Zero() {
+Vector2 Vector2::zero() {
 	Vector2 vec;
 	vec.makeZero();
 	return vec;
 }
 
-Vector2 Vector2::Unit( int index ) {
+Vector2 Vector2::one() {
+	Vector2 vec;
+	vec.makeOne();
+	return vec;
+}
+
+Vector2 Vector2::unit( int index ) {
 	Vector2 vec;
 	vec.makeUnit(index);
 	return vec;

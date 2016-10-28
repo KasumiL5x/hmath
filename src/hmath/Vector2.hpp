@@ -28,8 +28,9 @@ public:
 	void makeOne();
 	void makeUnit( int index );
 
-	static Vector2 Zero();
-	static Vector2 Unit( int index );
+	static Vector2 zero();
+	static Vector2 one();
+	static Vector2 unit( int index );
 
 protected:
 	std::array<float, 2> tuple_;

@@ -169,6 +169,26 @@ public:
 		Assert::AreEqual(0.0f, vec_div_zero[0], Epsilon);
 		Assert::AreEqual(0.0f, vec_div_zero[1], Epsilon);
 	}
+
+	TEST_METHOD(ComponentAlgebraOperations) {
+		const float a = 1.0f;
+		const float b = 2.0f;
+		const float c = 3.0f;
+		const float d = 4.0f;
+
+		const hmath::Vector2 vec_a = {a, b};
+		const hmath::Vector2 vec_b = {c, d};
+
+		// also tests vec *= vec
+		const hmath::Vector2 mul = vec_a * vec_b;
+		Assert::AreEqual(a*c, mul[0], Epsilon);
+		Assert::AreEqual(b*d, mul[1], Epsilon);
+
+		// also tests vec /= vec
+		const hmath::Vector2 div = vec_a / vec_b;
+		Assert::AreEqual(a/c, div[0], Epsilon);
+		Assert::AreEqual(b/d, div[1], Epsilon);
+	}
 };
 
 }

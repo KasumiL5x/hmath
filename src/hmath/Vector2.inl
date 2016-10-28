@@ -259,6 +259,10 @@ float normalizeRobust( Vector2& vec ) {
 	return length;
 }
 
+float distance( const Vector2& v0, const Vector2& v1 ) {
+	return (v0 - v1).length();
+}
+
 
 //
 // TUPLE OPERATIONS

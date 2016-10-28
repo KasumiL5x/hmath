@@ -64,6 +64,7 @@ float lengthRobust( const Vector2& vec );
 float sqrLength( const Vector2& vec );
 float normalize( Vector2& vec );
 float normalizeRobust( Vector2& vec );
+float distance( const Vector2& v0, const Vector2& v1 );
 
 #include "Vector2.inl"
 

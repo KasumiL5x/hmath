@@ -1,9 +1,9 @@
 #ifndef __hazuki_Constants__
 #define __hazuki_Constants__
 
-namespace hmath {
+namespace hm {
 
-const static float Epsilon = 0.000001f;
+const static float Epsilon = 1e-7f;
 
 }
 

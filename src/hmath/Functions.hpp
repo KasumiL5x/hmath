@@ -1,7 +1,7 @@
 #ifndef __hmath_Functions__
 #define __hmath_Functions__
 
-namespace hmath {
+namespace hm {
 
 inline float clamp01( float val ) {
 	if( val < 0.0f ) {

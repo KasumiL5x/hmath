@@ -247,6 +247,130 @@ public:
 		Assert::AreEqual(0.0f, zero[0], Epsilon);
 		Assert::AreEqual(0.0f, zero[1], Epsilon);
 	}
+
+	TEST_METHOD(Distance) {
+		const hmath::Vector2 vec_a = {12, 20};
+		const hmath::Vector2 vec_b = {16, -5};
+		Assert::AreEqual(25.317978f, hmath::distance(vec_a, vec_b), Epsilon);
+	}
+
+	TEST_METHOD(SqrDistance) {
+		const hmath::Vector2 vec_a = {12, 20};
+		const hmath::Vector2 vec_b = {16, -5};
+		// 641 = (16 + 625) = (4^2 + -25^2)
+		Assert::AreEqual(641.0f, hmath::sqrDistance(vec_a, vec_b), Epsilon);
+	}
+
+	TEST_METHOD(Lerp){
+		const float a = 0.0f;
+		const float b = 0.0f;
+		const float c = 1.0f;
+		const float d = 2.0f;
+		const hmath::Vector2 vec_a = {a, b};
+		const hmath::Vector2 vec_b = {c, d};
+
+		const hmath::Vector2 zero = hmath::lerp(vec_a, vec_b, 0.0f);
+		Assert::AreEqual(a, zero[0], Epsilon);
+		Assert::AreEqual(b, zero[1], Epsilon);
+
+		const hmath::Vector2 one = hmath::lerp(vec_a, vec_b, 1.0f);
+		Assert::AreEqual(c, one[0], Epsilon);
+		Assert::AreEqual(d, one[1], Epsilon);
+
+		const hmath::Vector2 half = hmath::lerp(vec_a, vec_b, 0.5f);
+		Assert::AreEqual(c/2, half[0], Epsilon);
+		Assert::AreEqual(d/2, half[1], Epsilon);
+
+		const hmath::Vector2 dub = hmath::lerp(vec_a, vec_b, 2.0f);
+		Assert::AreEqual(c*2, dub[0], Epsilon);
+		Assert::AreEqual(d*2, dub[1], Epsilon);
+
+		const hmath::Vector2 neg = hmath::lerp(vec_a, vec_b, -1.0f);
+		Assert::AreEqual(-c, neg[0], Epsilon);
+		Assert::AreEqual(-d, neg[1], Epsilon);
+	}
+
+	TEST_METHOD(LerpClamped) {
+		const float a = 0.0f;
+		const float b = 0.0f;
+		const float c = 1.0f;
+		const float d = 2.0f;
+		const hmath::Vector2 vec_a = {a, b};
+		const hmath::Vector2 vec_b = {c, d};
+
+		const hmath::Vector2 zero = hmath::lerpClamped(vec_a, vec_b, 0.0f);
+		Assert::AreEqual(a, zero[0], Epsilon);
+		Assert::AreEqual(b, zero[1], Epsilon);
+
+		const hmath::Vector2 one = hmath::lerpClamped(vec_a, vec_b, 1.0f);
+		Assert::AreEqual(c, one[0], Epsilon);
+		Assert::AreEqual(d, one[1], Epsilon);
+
+		const hmath::Vector2 half = hmath::lerpClamped(vec_a, vec_b, 0.5f);
+		Assert::AreEqual(c/2, half[0], Epsilon);
+		Assert::AreEqual(d/2, half[1], Epsilon);
+
+		const hmath::Vector2 dub = hmath::lerpClamped(vec_a, vec_b, 2.0f);
+		Assert::AreEqual(c, dub[0], Epsilon);
+		Assert::AreEqual(d, dub[1], Epsilon);
+
+		const hmath::Vector2 neg = hmath::lerpClamped(vec_a, vec_b, -1.0f);
+		Assert::AreEqual(0.0f, neg[0], Epsilon);
+		Assert::AreEqual(0.0f, neg[1], Epsilon);
+	}
+
+	TEST_METHOD(Minimum) {
+		const float a = 0.0f;
+		const float b = 10.0f;
+		const float c = 1.0f;
+		const float d = -2.0f;
+		const hmath::Vector2 vec_a = {a, b};
+		const hmath::Vector2 vec_b = {c, d};
+
+		const hmath::Vector2 min = hmath::minimum(vec_a, vec_b);
+		Assert::AreEqual(a, min[0], Epsilon);
+		Assert::AreEqual(d, min[1], Epsilon);
+	}
+
+	TEST_METHOD(Maximum) {
+		const float a = 0.0f;
+		const float b = 10.0f;
+		const float c = 1.0f;
+		const float d = -2.0f;
+		const hmath::Vector2 vec_a = {a, b};
+		const hmath::Vector2 vec_b = {c, d};
+
+		const hmath::Vector2 max = hmath::maximum(vec_a, vec_b);
+		Assert::AreEqual(c, max[0], Epsilon);
+		Assert::AreEqual(b, max[1], Epsilon);
+	}
+
+	TEST_METHOD(Approx) {
+		const float a = 1.0f;
+		const float b = 0.99998f;
+		const hmath::Vector2 vec_a = {a, a};
+		const hmath::Vector2 vec_b = {b, b};
+		Assert::IsTrue(hmath::approximately(vec_a, vec_b));
+
+		const float c = 1.0f;
+		const float d = 0.998f;
+		const hmath::Vector2 vec_c = {c, c};
+		const hmath::Vector2 vec_d = {d, d};
+		Assert::IsFalse(hmath::approximately(vec_c, vec_d));
+	}
+
+	TEST_METHOD(Reflect) {
+		// 45 degree vector on horizontal plane
+		const float angle = 45.0f * 0.0174532924f;
+		const hmath::Vector2 dir = {cosf(angle), sinf(angle)};
+		const hmath::Vector2 nrm = {1.0f, 0.0f};
+
+		// reflected vector angle difference should be 90
+		const hmath::Vector2 refl = hmath::reflect(dir, nrm);
+		const float angleBetween = acosf(hmath::dot(dir, refl)) * 57.29578f;
+
+		Assert::AreEqual(90.0f, angleBetween, Epsilon);
+	}
 };
 
 }

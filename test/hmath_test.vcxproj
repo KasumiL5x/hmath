@@ -154,9 +154,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Vector2Test.cpp" />
+    <ClCompile Include="Vector2TestOLD.cpp" />
     <ClCompile Include="Vector3Test.cpp" />
-    <ClCompile Include="VectorTest.cpp" />
+    <ClCompile Include="Vector2Test.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

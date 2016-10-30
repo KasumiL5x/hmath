@@ -238,6 +238,73 @@ TEST_CLASS(Vector2Test) {
 		const hm::Vector2 vec = {12.0f, 20.0f};
 		Assert::AreEqual(544.0f, hm::sqrLength(vec), EPSILON);
 	}
+
+	TEST_METHOD(Normalize) {
+		hm::Vector2 vec = {12.0f, 20.0f};
+		const float preLen = hm::normalize(vec);
+		const float postLen = hm::length(vec);
+		Assert::AreEqual(23.323807579381203f, preLen, EPSILON);
+		Assert::AreEqual(1.0f, postLen, EPSILON);
+
+		auto zero = hm::Vector2::zero();
+		const float zeroPreLen = hm::normalize(zero);
+		const float zeroPostLen = hm::length(zero);
+		Assert::AreEqual(0.0f, zeroPreLen, EPSILON);
+		Assert::AreEqual(0.0f, zeroPostLen, EPSILON);
+		Assert::AreEqual(0.0f, zero[0], EPSILON);
+		Assert::AreEqual(0.0f, zero[1], EPSILON);
+	}
+
+	TEST_METHOD(NormalizeRobust) {
+		hm::Vector2 vec = {12.0f, 20.0f};
+		const float preLen = hm::normalizeRobust(vec);
+		const float postLen = hm::length(vec);
+		Assert::AreEqual(23.323807579381203f, preLen, EPSILON);
+		Assert::AreEqual(1.0f, postLen, EPSILON);
+
+		auto zero = hm::Vector2::zero();
+		const float zeroPreLen = hm::normalizeRobust(zero);
+		const float zeroPostLen = hm::length(zero);
+		Assert::AreEqual(0.0f, zeroPreLen, EPSILON);
+		Assert::AreEqual(0.0f, zeroPostLen, EPSILON);
+		Assert::AreEqual(0.0f, zero[0], EPSILON);
+		Assert::AreEqual(0.0f, zero[1], EPSILON);
+	}
+
+	TEST_METHOD(Distance) {
+		const hm::Vector2 v0 = {12, 20};
+		const hm::Vector2 v1 = {16, -5};
+		Assert::AreEqual(25.317978f, hm::distance(v0, v1), EPSILON);
+
+		const auto zero = hm::Vector2::zero();
+		Assert::AreEqual(hm::length(v0), hm::distance(zero, v0), EPSILON);
+	}
+
+	TEST_METHOD(SqrDistance) {
+		const hm::Vector2 v0 = {12, 20};
+		const hm::Vector2 v1 = {16, -5};
+		Assert::AreEqual(641.0f, hm::sqrDistance(v0, v1), EPSILON);
+	}
+
+	TEST_METHOD(Minimum) {
+		const float a=1.0f, b=4.0f, c=2.0f, d=3.0f;
+		const hm::Vector2 v0 = {a, b};
+		const hm::Vector2 v1 = {c, d};
+
+		const auto min = hm::minimum(v0, v1);
+		Assert::AreEqual(a, min[0], EPSILON);
+		Assert::AreEqual(d, min[1], EPSILON);
+	}
+
+	TEST_METHOD(Maximum) {
+		const float a=1.0f, b=4.0f, c=2.0f, d=3.0f;
+		const hm::Vector2 v0 = {a, b};
+		const hm::Vector2 v1 = {c, d};
+
+		const auto max = hm::maximum(v0, v1);
+		Assert::AreEqual(c, max[0], EPSILON);
+		Assert::AreEqual(b, max[1], EPSILON);
+	}
 };
 
 }

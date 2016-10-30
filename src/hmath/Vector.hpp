@@ -29,6 +29,7 @@ public:
 	// global static vectors
 	static Vector zero();
 	static Vector one();
+	static Vector unit( int index );
 
 	// N-dependent static vectors
 	template<int P=N>
@@ -128,7 +129,7 @@ template<int N>
 Vector<N> operator*( float scalar, const Vector<N>& vec );
 
 template<int N>
-Vector<N> operator/( float scalar, const Vector<N>& vec );
+Vector<N> operator/( const Vector<N>& vec, float scalar );
 
 template<int N>
 Vector<N>& operator+=( Vector<N>& v0, const Vector<N>& v1 );

@@ -80,6 +80,13 @@ Vector<N> Vector<N>::one() {
 	return vec;
 }
 
+template<int N>
+Vector<N> Vector<N>::unit( int index ) {
+	Vector<N> vec;
+	vec.makeUnit(index);
+	return vec;
+}
+
 
 //
 // UNARY OPERATIONS
@@ -127,7 +134,7 @@ Vector<N> operator*( float scalar, const Vector<N>& vec ) {
 }
 
 template<int N>
-Vector<N> operator/( float scalar, const Vector<N>& vec ) {
+Vector<N> operator/( const Vector<N>& vec, float scalar ) {
 	Vector<N> result = vec;
 	return (result /= scalar);
 }

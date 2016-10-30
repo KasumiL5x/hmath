@@ -305,6 +305,76 @@ TEST_CLASS(Vector2Test) {
 		Assert::AreEqual(c, max[0], EPSILON);
 		Assert::AreEqual(b, max[1], EPSILON);
 	}
+
+	TEST_METHOD(Approximately) {
+		const hm::Vector2 v0 = {1.0f, 1.0f};
+		const hm::Vector2 v1 = {0.9999999f, 0.9999999f};
+		Assert::IsTrue(hm::approximately(v0, v1));
+
+		const hm::Vector2 v2 = {0.99f, 0.99f};
+		Assert::IsFalse(hm::approximately(v0, v2));
+	}
+
+	TEST_METHOD(Lerp) {
+		const float a=1.0f, b=2.0f, c=3.0f, d=4.0f;
+		const hm::Vector2 v0 = {a, b};
+		const hm::Vector2 v1 = {c, d};
+
+		const auto zero = hm::lerp(v0, v1, 0.0f);
+		Assert::AreEqual(a, zero[0], EPSILON);
+		Assert::AreEqual(b, zero[1], EPSILON);
+
+		const auto one = hm::lerp(v0, v1, 1.0f);
+		Assert::AreEqual(c, one[0], EPSILON);
+		Assert::AreEqual(d, one[1], EPSILON);
+
+		const auto half = hm::lerp(v0, v1, 0.5f);
+		Assert::AreEqual((a+c)/2, half[0], EPSILON);
+		Assert::AreEqual((b+d)/2, half[1], EPSILON);
+
+		const auto dub = hm::lerp(v0, v1, 2.0f);
+		Assert::AreEqual(5.0f, dub[0], EPSILON);
+		Assert::AreEqual(6.0f, dub[1], EPSILON);
+
+		const auto neg = hm::lerp(v0, v1, -2.0f);
+		Assert::AreEqual(-3.0f, neg[0], EPSILON);
+		Assert::AreEqual(-2.0f, neg[1], EPSILON);
+	}
+
+	TEST_METHOD(LerpClamped) {
+		const float a=1.0f, b=2.0f, c=3.0f, d=4.0f;
+		const hm::Vector2 v0 = {a, b};
+		const hm::Vector2 v1 = {c, d};
+
+		const auto zero = hm::lerpClamped(v0, v1, 0.0f);
+		Assert::AreEqual(a, zero[0], EPSILON);
+		Assert::AreEqual(b, zero[1], EPSILON);
+
+		const auto one = hm::lerpClamped(v0, v1, 1.0f);
+		Assert::AreEqual(c, one[0], EPSILON);
+		Assert::AreEqual(d, one[1], EPSILON);
+
+		const auto half = hm::lerpClamped(v0, v1, 0.5f);
+		Assert::AreEqual((a+c)/2, half[0], EPSILON);
+		Assert::AreEqual((b+d)/2, half[1], EPSILON);
+
+		const auto dub = hm::lerpClamped(v0, v1, 2.0f);
+		Assert::AreEqual(c, dub[0], EPSILON);
+		Assert::AreEqual(d, dub[1], EPSILON);
+
+		const auto neg = hm::lerpClamped(v0, v1, -2.0f);
+		Assert::AreEqual(a, neg[0], EPSILON);
+		Assert::AreEqual(b, neg[1], EPSILON);
+	}
+
+	TEST_METHOD(Reflect) {
+		const auto dir = MathHelper::vec2FromAngle(45.0f);
+		const hm::Vector2 nrm = {1.0f, 0.0f};
+		
+		const hm::Vector2 refl = hm::reflect(dir, nrm);
+		const float angleBetween = MathHelper::dotToDegrees(hm::dot(dir, refl));
+		Assert::AreEqual(90.0f, angleBetween, EPSILON);
+	}
 };
 
 }

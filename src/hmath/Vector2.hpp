@@ -1,5 +1,5 @@
 #ifndef __hmath_Vector2__
-#define __hmath_Vector2__ value
+#define __hmath_Vector2__
 
 #include "Vector.hpp"
 

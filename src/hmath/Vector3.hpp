@@ -1,20 +1,20 @@
 #ifndef __hmath_Vector3__
 #define __hmath_Vector3__
 
-#include <array>
-#include <initializer_list>
+#include "Vector.hpp"
 
-namespace hmath {
+namespace hm {
 
-class Vector3 {
-	public:
-		Vector3();
-		Vector3( const std::array<float, 3>& values );
-		Vector3( std::initializer_list<float> values );
+using Vector3 = Vector<3>;
 
-	protected:
-		std::array<float, 3> tuple_;
-};
+template<int N>
+Vector<N> cross( const Vector<N>& v0, const Vector<N>& v1 );
+
+template<int N>
+Vector<N> crossUnit( const Vector<N>& v0, const Vector<N>& v1 );
+
+template<int N>
+Vector<N> crossUnitRobust( const Vector<N>& v0, const Vector<N>& v1 );
 
 #include "Vector3.inl"
 

@@ -24,6 +24,11 @@ public:
 	inline float& get( int row, int col );
 	inline void set( int row, int col, float value );
 
+	void makeZero();
+	void makeIdentity();
+	static Matrix zero();
+	static Matrix identity();
+
 protected:
 	std::array<std::array<float, Cols>, Rows> data_;
 };

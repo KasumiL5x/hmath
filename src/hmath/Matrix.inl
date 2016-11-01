@@ -92,3 +92,32 @@ void Matrix<Rows, Cols>::set( int row, int col, float value ) {
 	assert((col >= 0 && col < Cols) && "Col out of bounds in Matrix() operator.");
 	data_[row][col] = value;
 }
+
+
+template<int Rows, int Cols>
+void Matrix<Rows, Cols>::makeZero() {
+	std::fill(data_.begin(), data_.end(), 0.0f);
+}
+
+template<int Rows, int Cols>
+void Matrix<Rows, Cols>::makeIdentity() {
+	makeZero();
+	const int numDiagonal = (Rows <= Cols ? Rows : Cols);
+	for( int i=0; i < numDiagonal; ++i ) {
+		set(i, i, 1.0f);
+	}
+}
+
+template<int Rows, int Cols>
+Matrix<Rows, Cols> Matrix<Rows, Cols>::zero() {
+	Matrix m;
+	m.makeZero();
+	return m;
+}
+
+template<int Rows, int Cols>
+Matrix<Rows, Cols> Matrix<Rows, Cols>::identity() {
+	Matrix m;
+	m.makeIdentity();
+	return m;
+}

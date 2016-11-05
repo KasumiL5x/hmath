@@ -175,3 +175,17 @@ Vector<Cols> operator*( const Vector<Rows>& V, const Matrix<Rows, Cols>& M ) {
 	}
 	return result;
 }
+
+template<int Rows, int Cols, int Common>
+Matrix<Rows, Cols> operator*( const Matrix<Rows, Cols>& A, const Matrix<Rows, Cols>& B ) {
+	Matrix<Rows, Cols> result;
+	for( int r = 0; r < Rows; ++r ) {
+		for( int c = 0; c < Cols; ++c ) {
+			result(r, c) = 0.0f;
+			for( int i = 0; i < Common; ++i ) {
+				result(r, c) += A(r, i) * B(i, c);
+			}
+		}
+	}
+	return result;
+}

@@ -52,6 +52,10 @@ Vector<Rows> operator*( const Matrix<Rows, Cols>& M, const Vector<Cols>& V );
 template<int Rows, int Cols>
 Vector<Cols> operator*( const Vector<Rows>& V, const Matrix<Rows, Cols>& M );
 
+// M*M
+template<int Rows, int Cols>
+Matrix<Rows, Cols> operator*( const Matrix<Rows, Cols>& A, const Matrix<Rows, Cols>& B );
+
 #include "Matrix.inl"
 
 }

@@ -121,3 +121,33 @@ Matrix<Rows, Cols> Matrix<Rows, Cols>::identity() {
 	m.makeIdentity();
 	return m;
 }
+
+
+template<int N> 
+Matrix<N, N> inverse( const Matrix<N, N>& M, bool* canInverse=nullptr ) {
+	Matrix<N, N> invM;
+	float determinant;
+	bool invertible = GaussianElimination()(N, &M[0], &invM[0], determinant, nullptr, nullptr, nullptr, 0, nullptr);
+	if( canInverse ) {
+		*canInverse = invertible;
+	}
+	return invM;
+}
+
+template<int N>
+float determinant( const Matrix<N, N>& M ) {
+	float determinant;
+	GaussianElimination()(N, &M[0], nullptr, determinant, nullptr, nullptr, nullptr, 0, nullptr);
+	return determinant;
+}
+
+template<int Rows, int Cols>
+Matrix<Rows, Cols> transpose( const Matrix<Rows, Cols>& M ) {
+	Matrix<Cols, Rows> result;
+	for( int r = 0; r < Rows; ++r ) {
+		for( int c = 0; c < Cols; ++c ) {
+			result(c, r) = M(r, c);
+		}
+	}
+	return result;
+}

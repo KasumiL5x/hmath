@@ -4,6 +4,7 @@
 #include <array>
 #include <initializer_list>
 #include <cassert>
+#include "GaussianElimination.hpp"
 
 namespace hm {
 
@@ -32,6 +33,15 @@ public:
 protected:
 	std::array<std::array<float, Cols>, Rows> data_;
 };
+
+template<int N> 
+Matrix<N, N> inverse( const Matrix<N, N>& M, bool* canInverse=nullptr );
+
+template<int N>
+float determinant( const Matrix<N, N>& M );
+
+template<int Rows, int Cols>
+Matrix<Rows, Cols> transpose( const Matrix<Rows, Cols>& M );
 
 #include "Matrix.inl"
 

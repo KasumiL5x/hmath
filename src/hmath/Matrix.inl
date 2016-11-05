@@ -151,3 +151,27 @@ Matrix<Rows, Cols> transpose( const Matrix<Rows, Cols>& M ) {
 	}
 	return result;
 }
+
+template<int Rows, int Cols>
+Vector<Rows> operator*( const Matrix<Rows, Cols>& M, const Vector<Cols>& V ) {
+	Vector<Rows> result;
+	for( int r = 0; r < Rows; ++r ) {
+		result[r] = 0.0f;
+		for( int c = 0; c < Cols; ++c ) {
+			result[r] += M(r, c) * V[c];
+		}
+	}
+	return result;
+}
+
+template<int Rows, int Cols>
+Vector<Cols> operator*( const Vector<Rows>& V, const Matrix<Rows, Cols>& M ) {
+	Vector<Cols> result;
+	for( int c = 0; c < Cols; ++c ) {
+		result[c] = 0.0f;
+		for( int r = 0; r < Rows; ++r ) {
+			result[c] += V[r] * M(r, c);
+		}
+	}
+	return result;
+}

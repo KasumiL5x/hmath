@@ -5,6 +5,7 @@
 #include <initializer_list>
 #include <cassert>
 #include "GaussianElimination.hpp"
+#include "Vector.hpp"
 
 namespace hm {
 
@@ -42,6 +43,14 @@ float determinant( const Matrix<N, N>& M );
 
 template<int Rows, int Cols>
 Matrix<Rows, Cols> transpose( const Matrix<Rows, Cols>& M );
+
+// matrix * vector
+template<int Rows, int Cols>
+Vector<Rows> operator*( const Matrix<Rows, Cols>& M, const Vector<Cols>& V );
+
+// V^T*M
+template<int Rows, int Cols>
+Vector<Cols> operator*( const Vector<Rows>& V, const Matrix<Rows, Cols>& M );
 
 #include "Matrix.inl"
 

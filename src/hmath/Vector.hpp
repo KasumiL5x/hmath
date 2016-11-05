@@ -199,6 +199,14 @@ Vector<N> lerpClamped( const Vector<N>& v0, const Vector<N>& v1, float t );
 template<int N>
 Vector<N> reflect( const Vector<N>& direction, const Vector<N>& normal );
 
+// lift N-tuple to (N+1) tuple, appending a new last element
+template<int N>
+Vector<N+1> lift( const Vector<N>& vec, float last );
+
+// project N-tuple to (N-1) tuple, discarding the last element
+template<int N>
+Vector<N-1> project( const Vector<N>& vec );
+
 #include "Vector.inl"
 
 }

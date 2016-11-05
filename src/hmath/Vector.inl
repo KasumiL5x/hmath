@@ -338,3 +338,23 @@ Vector<N> reflect( const Vector<N>& direction, const Vector<N>& normal ) {
 	Vector<N> result = ((-2.0f * dot(normal, direction)) * normal) + direction;
 	return result;
 }
+
+template<int N>
+Vector<N+1> lift( const Vector<N>& vec, float last ) {
+	Vector<N> result;
+	for( int i = 0; i < N; ++i ) {
+		result[i] = vec[i];
+	}
+	result[N] = last;
+	return result;
+}
+
+template<int N>
+Vector<N-1> project( const Vector<N>& vec ) {
+	static_assert(N >= 2, "Invalid vector dimension.");
+	Vector<N-1> result;
+	for( int i = 0; i < N - 1; ++i ) {
+		result[i] = vec[i];
+	}
+	return result;
+}

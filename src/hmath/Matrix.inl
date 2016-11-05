@@ -189,3 +189,27 @@ Matrix<Rows, Cols> operator*( const Matrix<Rows, Cols>& A, const Matrix<Rows, Co
 	}
 	return result;
 }
+
+template<int N>
+Matrix<N+1, N+1> lift( const Matrix<N, N>& M ) {
+	Matrix<N+1, N+1> result;
+	result.makeIdentity();
+	for( int r = 0; r < N; ++r ) {
+		for( int c = 0; c < N; ++c ) {
+			result(r, c) = M(r, c);
+		}
+	}
+	return result;
+}
+
+template<int N>
+Matrix<N-1, N-1> project( const Matrix<N, N>& M ) {
+	static_assert(N >= 2, "Invalid matrix dimension.");
+	Matrix<N-1, N-1> result;
+	for( int r = 0; r < N - 1; ++r ) {
+		for( int c = 0; c < N - 1; ++c ) {
+			result(r, c) = M(r, c);
+		}
+	}
+	return result;
+}

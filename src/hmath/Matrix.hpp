@@ -56,6 +56,14 @@ Vector<Cols> operator*( const Vector<Rows>& V, const Matrix<Rows, Cols>& M );
 template<int Rows, int Cols>
 Matrix<Rows, Cols> operator*( const Matrix<Rows, Cols>& A, const Matrix<Rows, Cols>& B );
 
+// insert N-by-N matrix into (N+1)-by-(N+1) with new entries at 0 except for the last row/col, which is 1
+template<int N>
+Matrix<N+1, N+1> lift( const Matrix<N, N>& M );
+
+// extract (N-1)-by-(N-1) block from input N-by-N matrix
+template<int N>
+Matrix<N-1, N-1> project( const Matrix<N, N>& M );
+
 #include "Matrix.inl"
 
 }

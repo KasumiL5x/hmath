@@ -63,3 +63,63 @@ float determinant( const Matrix4x4& M ) {
 	const float det = a0 * b5 - a1 * b4 + a2 * b3 + a3 * b2 - a4 * b1 + a5 * b0;
 	return det;
 }
+
+Matrix4x4 makeTranslation( float x, float y, float z ) {
+	Matrix4x4 result;
+	result.makeIdentity();
+	result(3, 0) = x;
+	result(3, 1) = y;
+	result(3, 2) = z;
+	return result;
+}
+
+Matrix4x4 makeTranslation( const Vector3& position ) {
+	return makeTranslation(position[0], position[1], position[2]);
+}
+
+Matrix4x4 makeRotation( float angle, float x, float y, float z ) {
+	const float c = cosf(angle);
+	const float s = sinf(angle);
+	const float t = 1.0f - c;
+
+	Matrix4x4 result;
+
+	result(0, 0) = t*x*x + c;
+	result(0, 1) = t*x*y + z*s;
+	result(0, 2) = t*x*z - y*s;
+	result(0, 3) = 0.0f;
+
+	result(1, 0) = t*x*y - z*s;
+	result(1, 1) = t*y*y + c;
+	result(1, 2) = t*y*z + x*s;
+	result(1, 3) = 0.0f;
+
+	result(2, 0) = t*x*z + y*s;
+	result(2, 1) = t*y*z - x*s;
+	result(2, 2) = t*z*z + c;
+	result(2, 3) = 0.0f;
+
+	result(3, 0) = 0.0f;
+	result(3, 1) = 0.0f;
+	result(3, 2) = 0.0f;
+	result(3, 3) = 1.0f;
+
+	return result;
+}
+
+Matrix4x4 makeRotation( float angle, const Vector3& axis ) {
+	return makeRotation(angle, axis[0], axis[1], axis[2]);
+}
+
+Matrix4x4 makeScale( float x, float y, float z ) {
+	Matrix4x4 result;
+	result.makeIdentity();
+	result(0, 0) = x;
+	result(1, 1) = y;
+	result(2, 2) = z;
+	return result;
+}
+
+Matrix4x4 makeScale( const Vector3& scale ) {
+	return makeScale(scale[0], scale[1], scale[2]);
+}

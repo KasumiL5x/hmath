@@ -123,3 +123,98 @@ Matrix4x4 makeScale( float x, float y, float z ) {
 Matrix4x4 makeScale( const Vector3& scale ) {
 	return makeScale(scale[0], scale[1], scale[2]);
 }
+
+Matrix4x4 makeOrthographic( float left, float right, float bottom, float top, float near, float far ) {
+	Matrix4x4 result;
+	result.makeIdentity();
+	result(0, 0) =  2.0f / (right - left);
+	result(1, 1) =  2.0f / (top - bottom);
+	result(2, 2) = -2.0f / (far - near);
+	result(3, 0) = -(right + left) / (right - left);
+	result(3, 1) = -(top + bottom) / (top - bottom);
+	result(3, 2) = -(far + near) / (far - near);
+	return result;
+}
+
+Matrix4x4 makeFrustum( float left, float right, float bottom, float top, float near, float far ) {
+	Matrix4x4 result;
+	result.makeZero();
+	result(0, 0) = (2.0f * near) / (right - left);
+	result(1, 1) = (2.0f * near) / (top - bottom);
+	result(2, 0) = (right + left) / (right - left);
+	result(2, 1) = (top + bottom) / (top - bottom);
+	result(2, 2) = -(far + near) / (far - near);
+	result(2, 3) = -1.0f;
+	result(3, 2) = -(2.0f * far * near) / (far - near);
+	return result;
+}
+
+Matrix4x4 makePerspectiveLH( float fovY, float aspect, float near, float far ) {
+	const float tanHalfFovY = tan(fovY * 0.5f);
+	Matrix4x4 result;
+	result.makeZero();
+	result(0, 0) = 1.0f / (aspect * tanHalfFovY);
+	result(1, 1) = 1.0f / (tanHalfFovY);
+	result(2, 2) = -(far + near) / (far - near);
+	result(2, 3) = -1.0f;
+	result(3, 2) = -(2.0f * far * near) / (far - near);
+	return result;
+}
+
+Matrix4x4 makePerspectiveRH( float fovY, float aspect, float near, float far ) {
+	const float tanHalfFovY = tan(fovY * 0.5f);
+	Matrix4x4 result;
+	result.makeZero();
+	result(0, 0) = 1.0f / (aspect * tanHalfFovY);
+	result(1, 1) = 1.0f / (tanHalfFovY);
+	result(2, 2) = -(far + near) / (far - near);
+	result(2, 3) = -1.0f;
+	result(3, 2) = -(2.0f * far * near) / (far - near);
+	return result;
+}
+
+Matrix4x4 makeLookAtLH( const Vector3& eye, const Vector3& target, const Vector3& up ) {
+	auto f = target - eye;
+	normalize(f);
+	auto s = cross(up, f);
+	normalize(s);
+	const auto u = cross(f, s);
+	Matrix4x4 result;
+	result.makeIdentity();
+	result(0, 0) = s[0];
+	result(1, 0) = s[1];
+	result(2, 0) = s[2];
+	result(0, 1) = u[0];
+	result(1, 1) = u[1];
+	result(2, 1) = u[2];
+	result(0, 2) = f[0];
+	result(1, 2) = f[1];
+	result(2, 2) = f[2];
+	result(3, 0) = -dot(s, eye);
+	result(3, 1) = -dot(u, eye);
+	result(3, 2) = -dot(f, eye);
+	return result;
+}
+
+Matrix4x4 makeLookAtRH( const Vector3& eye, const Vector3& target, const Vector3& up ) {
+	auto f = target - eye;
+	normalize(f);
+	auto s = cross(f, up);
+	normalize(s);
+	auto u = cross(s, f);
+	Matrix4x4 result;
+	result.makeIdentity();
+	result(0, 0) = s[0];
+	result(1, 0) = s[1];
+	result(2, 0) = s[2];
+	result(0, 1) = u[0];
+	result(1, 1) = u[1];
+	result(2, 1) = u[2];
+	result(0, 2) =-f[0];
+	result(1, 2) =-f[1];
+	result(2, 2) =-f[2];
+	result(3, 0) =-dot(s, eye);
+	result(3, 1) =-dot(u, eye);
+	result(3, 2) = dot(f, eye);
+	return result;
+}

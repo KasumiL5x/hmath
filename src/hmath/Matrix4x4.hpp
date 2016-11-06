@@ -72,6 +72,68 @@ Matrix4x4 makeScale( float x, float y, float z );
  */
 Matrix4x4 makeScale( const Vector3& scale );
 
+/**
+ * Creates an orthographic projection Matrix4x4
+ * 
+ * @param left   Left coordinate of the viewport.
+ * @param right  Right coordinate of the viewport.
+ * @param bottom Bottom coordinate of the viewport.
+ * @param top    Top coordinate of the viewport.
+ * @param near   Near plane distance.
+ * @param far    Far plane distance.
+ */
+Matrix4x4 makeOrthographic( float left, float right, float bottom, float top, float near, float far );
+
+/**
+ * Creates a frustum Matrix4x4.
+ * 
+ * @param left   Left coordinate of the viewport.
+ * @param right  Right coordinate of the viewport.
+ * @param bottom Bottom coordinate of the viewport.
+ * @param top    Top coordinate of the viewport.
+ * @param near   Near plane distance.
+ * @param far    Far plane distance
+ */
+Matrix4x4 makeFrustum( float left, float right, float bottom, float top, float near, float far );
+
+/**
+ * Makes a left-handed perspective projection Matrix.
+ * 
+ * @param fovY   Vertical field of view in radians.
+ * @param aspect Aspect ratio.
+ * @param near   Near plane distance.
+ * @param far    Far plane distance.
+ */
+Matrix4x4 makePerspectiveLH( float fovY, float aspect, float near, float far );
+
+/**
+ * Makes a right-handed perspective projection Matrix.
+ * 
+ * @param fovY   Vertical field of view in radians.
+ * @param aspect Aspect ratio.
+ * @param near   Near plane distance.
+ * @param far    Far plane distance.
+ */
+Matrix4x4 makePerspectiveRH( float fovY, float aspect, float near, float far );
+
+/**
+ * Makes a left-handed lookat matrix.
+ * 
+ * @param eye    Eye position.
+ * @param target Look at target.
+ * @param up     Local up vector.
+ */
+Matrix4x4 makeLookAtLH( const Vector3& eye, const Vector3& target, const Vector3& up );
+
+/**
+ * Makes a right-handed lookat matrix.
+ * 
+ * @param eye    Eye position.
+ * @param target Look at target.
+ * @param up     Local up vector.
+ */
+Matrix4x4 makeLookAtRH( const Vector3& eye, const Vector3& target, const Vector3& up );
+
 
 #include "Matrix4x4.inl"
 

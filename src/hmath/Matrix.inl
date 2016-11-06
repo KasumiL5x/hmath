@@ -96,7 +96,9 @@ void Matrix<Rows, Cols>::set( int row, int col, float value ) {
 
 template<int Rows, int Cols>
 void Matrix<Rows, Cols>::makeZero() {
-	std::fill(data_.begin(), data_.end(), 0.0f);
+	for( auto& row : data_ ) {
+		std::fill(row.begin(), row.end(), 0.0f);
+	}
 }
 
 template<int Rows, int Cols>

@@ -124,7 +124,7 @@ Matrix<Rows, Cols> Matrix<Rows, Cols>::identity() {
 
 
 template<int N> 
-Matrix<N, N> inverse( const Matrix<N, N>& M, bool* canInverse=nullptr ) {
+Matrix<N, N> inverse( const Matrix<N, N>& M, bool* canInverse ) {
 	Matrix<N, N> invM;
 	float determinant;
 	bool invertible = GaussianElimination()(N, &M[0], &invM[0], determinant, nullptr, nullptr, nullptr, 0, nullptr);

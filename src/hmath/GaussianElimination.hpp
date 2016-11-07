@@ -10,7 +10,7 @@ namespace hm {
 
 class GaussianElimination {
 public:
-	bool operator()( int numRows,
+	inline bool operator()( int numRows,
 		const float* M, float* inverseM, float& determinant,
 		const float* B, float* X,
 		const float* C, int numCols, float* Y ) const;

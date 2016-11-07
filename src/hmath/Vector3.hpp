@@ -8,13 +8,13 @@ namespace hm {
 using Vector3 = Vector<3>;
 
 template<int N>
-Vector<N> cross( const Vector<N>& v0, const Vector<N>& v1 );
+inline Vector<N> cross( const Vector<N>& v0, const Vector<N>& v1 );
 
 template<int N>
-Vector<N> crossUnit( const Vector<N>& v0, const Vector<N>& v1 );
+inline Vector<N> crossUnit( const Vector<N>& v0, const Vector<N>& v1 );
 
 template<int N>
-Vector<N> crossUnitRobust( const Vector<N>& v0, const Vector<N>& v1 );
+inline Vector<N> crossUnitRobust( const Vector<N>& v0, const Vector<N>& v1 );
 
 #include "Vector3.inl"
 

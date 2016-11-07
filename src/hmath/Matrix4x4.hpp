@@ -14,14 +14,14 @@ using Matrix4x4 = Matrix<4, 4>;
  * @param M Input Matrix.
  * @param isInvertible If not null, returns whether or not the input Matrix is invertible.
  */
-Matrix4x4 inverse( const Matrix4x4& M, bool* isInvertible=nullptr );
+inline Matrix4x4 inverse( const Matrix4x4& M, bool* isInvertible=nullptr );
 
 /**
  * Computes the determinant of the given Matrix.
  * 
  * @param M Input Matrix.
  */
-float determinant( const Matrix4x4& M );
+inline float determinant( const Matrix4x4& M );
 
 /**
  * Creates a translation Matrix4x4.
@@ -30,14 +30,14 @@ float determinant( const Matrix4x4& M );
  * @param y Y coordinate.
  * @param z Z coordinate.
  */
-Matrix4x4 makeTranslation( float x, float y, float z );
+inline Matrix4x4 makeTranslation( float x, float y, float z );
 
 /**
  * Creates a translation Matrix4x4.
  * 
  * @param position (X,Y,Z) position.
  */
-Matrix4x4 makeTranslation( const Vector3& position );
+inline Matrix4x4 makeTranslation( const Vector3& position );
 
 /**
  * Creates a rotation Matrix4x4 of an angle along an axis.
@@ -46,7 +46,7 @@ Matrix4x4 makeTranslation( const Vector3& position );
  * @param y Y component of the normalized axis of rotation.
  * @param z Z component of the normalized axis of rotation.
  */
-Matrix4x4 makeRotation( float angle, float x, float y, float z );
+inline Matrix4x4 makeRotation( float angle, float x, float y, float z );
 
 /**
 	* Creates a rotation Matrix4x4 of an angle along an axis.
@@ -54,7 +54,7 @@ Matrix4x4 makeRotation( float angle, float x, float y, float z );
  * @param angle Angle in radians.
  * @param axis Normalized axis of rotation.
  */
-Matrix4x4 makeRotation( float angle, const Vector3& axis );
+inline Matrix4x4 makeRotation( float angle, const Vector3& axis );
 
 /**
  * Creates a scale Matrix4x4.
@@ -63,14 +63,14 @@ Matrix4x4 makeRotation( float angle, const Vector3& axis );
  * @param y Y scale.
  * @param z Z scale.
  */
-Matrix4x4 makeScale( float x, float y, float z );
+inline Matrix4x4 makeScale( float x, float y, float z );
 
 /**
  * Creates a scale Matrix4x4.
  * 
  * @param scale (X,Y,Z) scale.
  */
-Matrix4x4 makeScale( const Vector3& scale );
+inline Matrix4x4 makeScale( const Vector3& scale );
 
 /**
  * Creates an orthographic projection Matrix4x4
@@ -82,7 +82,7 @@ Matrix4x4 makeScale( const Vector3& scale );
  * @param near   Near plane distance.
  * @param far    Far plane distance.
  */
-Matrix4x4 makeOrthographic( float left, float right, float bottom, float top, float near, float far );
+inline Matrix4x4 makeOrthographic( float left, float right, float bottom, float top, float near, float far );
 
 /**
  * Creates a frustum Matrix4x4.
@@ -94,7 +94,7 @@ Matrix4x4 makeOrthographic( float left, float right, float bottom, float top, fl
  * @param near   Near plane distance.
  * @param far    Far plane distance
  */
-Matrix4x4 makeFrustum( float left, float right, float bottom, float top, float near, float far );
+inline Matrix4x4 makeFrustum( float left, float right, float bottom, float top, float near, float far );
 
 /**
  * Makes a left-handed perspective projection Matrix.
@@ -104,7 +104,7 @@ Matrix4x4 makeFrustum( float left, float right, float bottom, float top, float n
  * @param near   Near plane distance.
  * @param far    Far plane distance.
  */
-Matrix4x4 makePerspectiveLH( float fovY, float aspect, float near, float far );
+inline Matrix4x4 makePerspectiveLH( float fovY, float aspect, float near, float far );
 
 /**
  * Makes a right-handed perspective projection Matrix.
@@ -114,7 +114,7 @@ Matrix4x4 makePerspectiveLH( float fovY, float aspect, float near, float far );
  * @param near   Near plane distance.
  * @param far    Far plane distance.
  */
-Matrix4x4 makePerspectiveRH( float fovY, float aspect, float near, float far );
+inline Matrix4x4 makePerspectiveRH( float fovY, float aspect, float near, float far );
 
 /**
  * Makes a left-handed lookat matrix.
@@ -123,7 +123,7 @@ Matrix4x4 makePerspectiveRH( float fovY, float aspect, float near, float far );
  * @param target Look at target.
  * @param up     Local up vector.
  */
-Matrix4x4 makeLookAtLH( const Vector3& eye, const Vector3& target, const Vector3& up );
+inline Matrix4x4 makeLookAtLH( const Vector3& eye, const Vector3& target, const Vector3& up );
 
 /**
  * Makes a right-handed lookat matrix.
@@ -132,7 +132,7 @@ Matrix4x4 makeLookAtLH( const Vector3& eye, const Vector3& target, const Vector3
  * @param target Look at target.
  * @param up     Local up vector.
  */
-Matrix4x4 makeLookAtRH( const Vector3& eye, const Vector3& target, const Vector3& up );
+inline Matrix4x4 makeLookAtRH( const Vector3& eye, const Vector3& target, const Vector3& up );
 
 
 #include "Matrix4x4.inl"

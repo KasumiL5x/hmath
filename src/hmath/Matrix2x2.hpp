@@ -16,14 +16,14 @@ float getRotationAngle( const Matrix2x2& rotation );
  * @param M Input Matrix.
  * @param isInvertible If not null, returns whether or not the input Matrix is invertible.
  */
-Matrix2x2 inverse( const Matrix2x2& M, bool* isInvertible=nullptr );
+inline Matrix2x2 inverse( const Matrix2x2& M, bool* isInvertible=nullptr );
 
 /**
  * Computes the determinant of the given Matrix.
  * 
  * @param M Input Matrix.
  */
-float determinant( const Matrix2x2& M );
+inline float determinant( const Matrix2x2& M );
 
 #include "Matrix2x2.inl"
 

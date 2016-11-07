@@ -158,54 +158,54 @@ Vector<N>& operator/=( Vector<N>& v0, const Vector<N>& v1 );
 
 // geometric operations
 template<int N>
-float dot( const Vector<N>& v0, const Vector<N>& v1 );
+inline float dot( const Vector<N>& v0, const Vector<N>& v1 );
 
 template<int N>
-float length( const Vector<N>& vec );
+inline float length( const Vector<N>& vec );
 
 template<int N>
-float lengthRobust( const Vector<N>& vec );
+inline float lengthRobust( const Vector<N>& vec );
 
 template<int N>
-float sqrLength( const Vector<N>& vec );
+inline float sqrLength( const Vector<N>& vec );
 
 template<int N>
-float normalize( Vector<N>& vec );
+inline float normalize( Vector<N>& vec );
 
 template<int N>
-float normalizeRobust( Vector<N>& vec );
+inline float normalizeRobust( Vector<N>& vec );
 
 template<int N>
-float distance( const Vector<N>& v0, const Vector<N>& v1 );
+inline float distance( const Vector<N>& v0, const Vector<N>& v1 );
 
 template<int N>
-float sqrDistance( const Vector<N>& v0, const Vector<N>& v1 );
+inline float sqrDistance( const Vector<N>& v0, const Vector<N>& v1 );
 
 template<int N>
-Vector<N> minimum( const Vector<N>& v0, const Vector<N>& v1 );
+inline Vector<N> minimum( const Vector<N>& v0, const Vector<N>& v1 );
 
 template<int N>
-Vector<N> maximum( const Vector<N>& v0, const Vector<N>& v1 );
+inline Vector<N> maximum( const Vector<N>& v0, const Vector<N>& v1 );
 
 template<int N>
-bool approximately( const Vector<N>& v0, const Vector<N>& v1 );
+inline bool approximately( const Vector<N>& v0, const Vector<N>& v1 );
 
 template<int N>
-Vector<N> lerp( const Vector<N>& v0, const Vector<N>& v1, float t );
+inline Vector<N> lerp( const Vector<N>& v0, const Vector<N>& v1, float t );
 
 template<int N>
-Vector<N> lerpClamped( const Vector<N>& v0, const Vector<N>& v1, float t );
+inline Vector<N> lerpClamped( const Vector<N>& v0, const Vector<N>& v1, float t );
 
 template<int N>
-Vector<N> reflect( const Vector<N>& direction, const Vector<N>& normal );
+inline Vector<N> reflect( const Vector<N>& direction, const Vector<N>& normal );
 
 // lift N-tuple to (N+1) tuple, appending a new last element
 template<int N>
-Vector<N+1> lift( const Vector<N>& vec, float last );
+inline Vector<N+1> lift( const Vector<N>& vec, float last );
 
 // project N-tuple to (N-1) tuple, discarding the last element
 template<int N>
-Vector<N-1> project( const Vector<N>& vec );
+inline Vector<N-1> project( const Vector<N>& vec );
 
 #include "Vector.inl"
 

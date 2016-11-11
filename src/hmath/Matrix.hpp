@@ -53,8 +53,8 @@ template<int Rows, int Cols>
 Vector<Cols> operator*( const Vector<Rows>& V, const Matrix<Rows, Cols>& M );
 
 // M*M
-template<int Rows, int Cols>
-Matrix<Rows, Cols> operator*( const Matrix<Rows, Cols>& A, const Matrix<Rows, Cols>& B );
+template<int Rows, int Cols, int Common>
+Matrix<Rows, Cols> operator*( const Matrix<Rows, Common>& A, const Matrix<Common, Cols>& B );
 
 // insert N-by-N matrix into (N+1)-by-(N+1) with new entries at 0 except for the last row/col, which is 1
 template<int N>

@@ -179,7 +179,7 @@ Vector<Cols> operator*( const Vector<Rows>& V, const Matrix<Rows, Cols>& M ) {
 }
 
 template<int Rows, int Cols, int Common>
-Matrix<Rows, Cols> operator*( const Matrix<Rows, Cols>& A, const Matrix<Rows, Cols>& B ) {
+Matrix<Rows, Cols> operator*( const Matrix<Rows, Common>& A, const Matrix<Common, Cols>& B ) {
 	Matrix<Rows, Cols> result;
 	for( int r = 0; r < Rows; ++r ) {
 		for( int c = 0; c < Cols; ++c ) {

@@ -35,6 +35,9 @@ protected:
 	std::array<std::array<float, Cols>, Rows> data_;
 };
 
+template<int N>
+inline Matrix<N, N> multiply( const Matrix<N, N>& lhs, const Matrix<N, N>& rhs );
+
 template<int N> 
 inline Matrix<N, N> inverse( const Matrix<N, N>& M, bool* canInverse=nullptr );
 

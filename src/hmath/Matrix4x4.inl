@@ -149,7 +149,7 @@ Matrix4x4 makeFrustum( float left, float right, float bottom, float top, float n
 	return result;
 }
 
-Matrix4x4 makePerspectiveLH( float fovY, float aspect, float near, float far ) {
+inline Matrix4x4 makePerspective( float fovY, float aspect, float near, float far ) {
 	const float tanHalfFovY = tan(fovY * 0.5f);
 	Matrix4x4 result;
 	result.makeZero();
@@ -161,42 +161,7 @@ Matrix4x4 makePerspectiveLH( float fovY, float aspect, float near, float far ) {
 	return result;
 }
 
-Matrix4x4 makePerspectiveRH( float fovY, float aspect, float near, float far ) {
-	const float tanHalfFovY = tan(fovY * 0.5f);
-	Matrix4x4 result;
-	result.makeZero();
-	result(0, 0) = 1.0f / (aspect * tanHalfFovY);
-	result(1, 1) = 1.0f / (tanHalfFovY);
-	result(2, 2) = -(far + near) / (far - near);
-	result(2, 3) = -1.0f;
-	result(3, 2) = -(2.0f * far * near) / (far - near);
-	return result;
-}
-
-Matrix4x4 makeLookAtLH( const Vector3& eye, const Vector3& target, const Vector3& up ) {
-	auto f = target - eye;
-	normalize(f);
-	auto s = cross(up, f);
-	normalize(s);
-	const auto u = cross(f, s);
-	Matrix4x4 result;
-	result.makeIdentity();
-	result(0, 0) = s[0];
-	result(1, 0) = s[1];
-	result(2, 0) = s[2];
-	result(0, 1) = u[0];
-	result(1, 1) = u[1];
-	result(2, 1) = u[2];
-	result(0, 2) = f[0];
-	result(1, 2) = f[1];
-	result(2, 2) = f[2];
-	result(3, 0) = -dot(s, eye);
-	result(3, 1) = -dot(u, eye);
-	result(3, 2) = -dot(f, eye);
-	return result;
-}
-
-Matrix4x4 makeLookAtRH( const Vector3& eye, const Vector3& target, const Vector3& up ) {
+Matrix4x4 makeLookAt( const Vector3& eye, const Vector3& target, const Vector3& up ) {
 	auto f = target - eye;
 	normalize(f);
 	auto s = cross(f, up);

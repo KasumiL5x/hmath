@@ -97,16 +97,6 @@ inline Matrix4x4 makeOrthographic( float left, float right, float bottom, float 
 inline Matrix4x4 makeFrustum( float left, float right, float bottom, float top, float near, float far );
 
 /**
- * Makes a left-handed perspective projection Matrix.
- * 
- * @param fovY   Vertical field of view in radians.
- * @param aspect Aspect ratio.
- * @param near   Near plane distance.
- * @param far    Far plane distance.
- */
-inline Matrix4x4 makePerspectiveLH( float fovY, float aspect, float near, float far );
-
-/**
  * Makes a right-handed perspective projection Matrix.
  * 
  * @param fovY   Vertical field of view in radians.
@@ -114,16 +104,7 @@ inline Matrix4x4 makePerspectiveLH( float fovY, float aspect, float near, float 
  * @param near   Near plane distance.
  * @param far    Far plane distance.
  */
-inline Matrix4x4 makePerspectiveRH( float fovY, float aspect, float near, float far );
-
-/**
- * Makes a left-handed lookat matrix.
- * 
- * @param eye    Eye position.
- * @param target Look at target.
- * @param up     Local up vector.
- */
-inline Matrix4x4 makeLookAtLH( const Vector3& eye, const Vector3& target, const Vector3& up );
+inline Matrix4x4 makePerspective( float fovY, float aspect, float near, float far );
 
 /**
  * Makes a right-handed lookat matrix.
@@ -132,7 +113,7 @@ inline Matrix4x4 makeLookAtLH( const Vector3& eye, const Vector3& target, const 
  * @param target Look at target.
  * @param up     Local up vector.
  */
-inline Matrix4x4 makeLookAtRH( const Vector3& eye, const Vector3& target, const Vector3& up );
+inline Matrix4x4 makeLookAt( const Vector3& eye, const Vector3& target, const Vector3& up );
 
 
 #include "Matrix4x4.inl"

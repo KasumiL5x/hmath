@@ -6,6 +6,7 @@
 #include <cassert>
 #include "GaussianElimination.hpp"
 #include "Vector.hpp"
+#include "Vector4.hpp"
 
 namespace hm {
 
@@ -35,9 +36,6 @@ protected:
 	std::array<std::array<float, Cols>, Rows> data_;
 };
 
-template<int N>
-inline Matrix<N, N> multiply( const Matrix<N, N>& lhs, const Matrix<N, N>& rhs );
-
 template<int N> 
 inline Matrix<N, N> inverse( const Matrix<N, N>& M, bool* canInverse=nullptr );
 
@@ -58,6 +56,12 @@ Vector<Cols> operator*( const Vector<Rows>& V, const Matrix<Rows, Cols>& M );
 // M*M
 template<int Rows, int Cols, int Common>
 Matrix<Rows, Cols> operator*( const Matrix<Rows, Common>& A, const Matrix<Common, Cols>& B );
+
+template<int Rows, int Cols, int Common>
+Matrix<Rows, Cols> multiplyAB( const Matrix<Rows, Common>& A, const Matrix<Common, Cols>& B );
+
+template<int Rows, int Cols, int Common>
+Matrix<Rows, Cols> multiplyBA( const Matrix<Rows, Common>& A, const Matrix<Common, Cols>& B );
 
 // insert N-by-N matrix into (N+1)-by-(N+1) with new entries at 0 except for the last row/col, which is 1
 template<int N>

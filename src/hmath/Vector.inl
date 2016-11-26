@@ -341,7 +341,7 @@ Vector<N> reflect( const Vector<N>& direction, const Vector<N>& normal ) {
 
 template<int N>
 Vector<N+1> lift( const Vector<N>& vec, float last ) {
-	Vector<N> result;
+	Vector<N+1> result;
 	for( int i = 0; i < N; ++i ) {
 		result[i] = vec[i];
 	}

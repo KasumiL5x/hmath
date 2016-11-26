@@ -29,9 +29,7 @@ TEST_CLASS(MatrixTest) {
 			0.0f, 0.0f, -0.200020000f, 0.0f
 		};
 
-		const auto C = A * B;
-
-		auto D = hm::multiply(A, B);
+		const auto C = B * A;
 
 		const float EPSILON = 1e-5f;
 		Assert::AreEqual(1.4844516103427763f, C.get(0, 0), EPSILON);
